@@ -1,5 +1,15 @@
 import random
 
+from DeepLearningGo.agent.base import Agent
+from DeepLearningGo.gameresult import GameResult
+
+
+
+#To implement
+def reverse_game_result(opponent_best_result):
+	pass
+
+
 class MinimaxAgent(Agent):
 
 	def select_move(self, game_state):
@@ -8,7 +18,7 @@ class MinimaxAgent(Agent):
 		losing_moves = []
 		for possible_move in game_state.legal_moves():
 			next_state = game_state.apply_move(possible_move)
-			opponent_best_outcome = best_result(next_state)
+			opponent_best_outcome = self.best_result(next_state)
 			our_best_outcome = reverse_game_result(opponent_best_outcome)
 			if our_best_outcome == GameResult.win:
 				winning_moves.append(possible_move)
@@ -23,11 +33,12 @@ class MinimaxAgent(Agent):
 		return random.choice(losing_moves)
 
 
-	def best_result(game_state):
-		if game_state.is_over():
-			if game_state.winner() == game_state.next_player:
-				return GameResult.win
-			elif game_state.winner() is None:
-				return GameResult.draw
-			else:
-				return GameResult.loss
+	def best_result(self, game_state):
+		best_result_so_far = GameResult.loss
+		for candidate_move in game_state.legal_moves():
+			next_state = game_state.apply_move(candidate_move)
+			opponent_best_result = self.best_result(next_state)
+			our_result = reverse_game_result(opponent_best_result)
+			if our_result.value > best_result_so_far.value:
+				best_result_so_far = our_result
+		return best_result_so_far

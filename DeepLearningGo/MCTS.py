@@ -1,5 +1,8 @@
 import random
 
+from DeepLearningGo.gotypes import Player
+
+
 class MCTSNode(object):
 
 	def __init__(self, game_state, parent=None, move=None):
@@ -19,7 +22,7 @@ class MCTSNode(object):
 		new_move = self.unvisited_moves.pop(index)
 		new_game_state = self.game_state.apply_move(new_move)
 		new_node = MCTSNode(new_game_state, self, new_move)
-		self;children.append(new_node)
+		self.children.append(new_node)
 
 		return new_node
 
@@ -35,3 +38,4 @@ class MCTSNode(object):
 
 	def winning_frac(self, player):
 		return float(self.win_counts[player]) / float(self.num_rollouts)
+
