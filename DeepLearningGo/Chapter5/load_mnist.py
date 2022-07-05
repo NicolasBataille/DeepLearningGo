@@ -17,6 +17,10 @@ def shape_data(data):
 
 
 def load_data_impl():
+    # file retrieved by:
+    #   wget https://s3.amazonaws.com/img-datasets/mnist.npz -O code/dlgo/nn/mnist.npz
+    # code based on:
+    #   site-packages/keras/datasets/mnist.py
     path = 'mnist.npz'
     f = np.load(path)
     x_train, y_train = f['x_train'], f['y_train']
@@ -27,4 +31,3 @@ def load_data_impl():
 def load_data():
     train_data, test_data = load_data_impl()
     return shape_data(train_data), shape_data(test_data)
-
