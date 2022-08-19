@@ -7,12 +7,12 @@ import shutil
 import numpy as np
 from keras.utils import to_categorical
 
-from dlgo.gosgf import Sgf_game
-from dlgo.goboard_fast import Board, GameState, Move 
-from dlgo.gotypes import Player, Point
-from dlgo.encoders.base import get_encoder_by_name
-from dlgo.data.index_processor import KGSIndex
-from dlgo.data.sampling import Sampler
+from gosgf import Sgf_game
+from goboard_fast import Board, GameState, Move 
+from gotypes import Player, Point
+from encoders.base import get_encoder_by_name
+from data.index_processor import KGSIndex
+from data.sampling import Sampler
 
 class GoDataProcessor :
     def __init__(self, encoder='oneplane', data_directory='data'):

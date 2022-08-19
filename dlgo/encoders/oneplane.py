@@ -1,8 +1,8 @@
 # tag::oneplane_imports[]
 import numpy as np
 
-from dlgo.encoders.base import Encoder
-from dlgo.goboard import Point
+from encoders.base import Encoder
+from goboard import Point
 # end::oneplane_imports[]
 
 

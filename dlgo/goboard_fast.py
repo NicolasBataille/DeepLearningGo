@@ -1,8 +1,8 @@
 import copy
-from dlgo.gotypes import Player, Point
-from dlgo.scoring import compute_game_result
-from dlgo import zobrist
-from dlgo.utils import MoveAge
+from gotypes import Player, Point
+from scoring import compute_game_result
+import zobrist
+from utils import MoveAge
 
 __all__ = [
     'Board',
