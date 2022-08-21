@@ -1,8 +1,8 @@
 import copy
-from gotypes import Player, Point
-from scoring import compute_game_result
+from dlgo.gotypes import Player, Point
+from dlgo.scoring import compute_game_result
 # tag::import_zobrist[]
-import zobrist
+from dlgo import zobrist
 # end::import_zobrist[]
 
 __all__ = [

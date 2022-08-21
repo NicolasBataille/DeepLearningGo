@@ -2,7 +2,7 @@
 from __future__ import absolute_import
 from collections import namedtuple
 
-from gotypes import Player, Point
+from dlgo.gotypes import Player, Point
 # end::scoring_imports[]
 
 

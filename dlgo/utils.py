@@ -1,4 +1,4 @@
-import gotypes
+from dlgo import gotypes
 import numpy as np
 
 COLS = 'ABCDEFGHJKLMNOPQRST'
