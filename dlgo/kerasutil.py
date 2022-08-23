@@ -11,16 +11,17 @@ def save_model_to_hdf5_group(model, f):
     # Use Keras save_model to save the full model (including optimizer
     # state) to a file.
     # Then we can embed the contents of that HDF5 file inside ours.
-    tempfd, tempfname = tempfile.mkstemp(prefix='tmp-kerasmodel')
-    try:
-        os.close(tempfd)
-        save_model(model, tempfname)
-        serialized_model = h5py.File(tempfname, 'r')
-        root_item = serialized_model.get('/')
-        serialized_model.copy(root_item, f, 'kerasmodel')
-        serialized_model.close()
-    finally:
-        os.unlink(tempfname)
+    #tempfd, tempfname = tempfile.mkstemp(prefix='tmp-kerasmodel')
+    #try:
+        #os.close(tempfd)
+    name = "test"
+    save_model(model, name, save_format='h5')
+    serialized_model = h5py.File(name, 'r')
+    root_item = serialized_model.get('/')
+    serialized_model.copy(root_item, f, 'kerasmodel')
+    serialized_model.close()
+    #finally:
+        #os.unlink(name)
 
 
 def load_model_from_hdf5_group(f, custom_objects=None):
